@@ -1,0 +1,30 @@
+{
+  "name": "node-service",
+  "version": "1.0.0",
+  "description": "Lightweight Node.js/Express web service",
+  "main": "service.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artpropp/node-service.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "micro",
+    "web",
+    "service"
+  ],
+  "author": "Artur Propp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/artpropp/node-service/issues"
+  },
+  "homepage": "https://github.com/artpropp/node-service#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "winston": "^3.0.0-rc3"
+  }
+}
