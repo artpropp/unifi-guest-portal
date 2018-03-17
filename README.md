@@ -7,5 +7,6 @@ To start the template service simple run the following commands
 
 ```bash
 npm install
-node index.js
+npm start
 ```
+
