@@ -1,25 +1,38 @@
 const fs = require('fs')
-const winston = require('winston')
+const { createLogger, format, transports } = require('winston')
+const { colorize, combine, label, printf, timestamp } = format
 const config = require('../config')
 
 if (!fs.existsSync(config.log.dir)) {
     fs.mkdirSync(config.log.dir)
 }
 
-const logger = winston.createLogger({
+const customFormat = printf(info => {
+    return `${info.timestamp} [${info.label}] ${info.level}: ${info.message}` 
+})
+
+const logger = createLogger({
     level: 'info',
-    format: winston.format.json(),
+    format: combine(
+        label({ label: 'node-service' }),
+        timestamp(),
+        customFormat
+    ),
     transports: [
-        new winston.transports.File({ filename: `${config.log.dir}/${config.log.error}`, level: 'error' }),
-        new winston.transports.File({ filename: `${config.log.dir}/${config.log.file}` })
+        new transports.File({ filename: `${config.log.dir}/${config.log.error}`, level: 'error' }),
+        new transports.File({ filename: `${config.log.dir}/${config.log.file}` })
     ]
 })
 
 if(process.env.NODE_ENV !== 'production') {
-    logger.add(new winston.transports.Console({
-        format: winston.format.combine(
-            winston.format.colorize(),
-            winston.format.simple()
+    const consoleFormat = printf(info => {
+        return `${info.level}: ${info.message}`
+    })
+
+    logger.add(new transports.Console({
+        format: combine(
+            colorize(),
+            consoleFormat
         )
     }))
 }
