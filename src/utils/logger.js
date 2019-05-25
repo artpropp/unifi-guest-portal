@@ -1,7 +1,7 @@
 const fs = require('fs')
 const { createLogger, format, transports } = require('winston')
 const { colorize, combine, label, printf, timestamp } = format
-const config = require('../config')
+const config = require('../../config')
 
 if (!fs.existsSync(config.log.dir)) {
     fs.mkdirSync(config.log.dir)
