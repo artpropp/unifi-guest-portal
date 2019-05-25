@@ -27,5 +27,6 @@
   "dependencies": {
     "express": "^4.17.0",
     "winston": "^3.2.1"
-  }
+  },
+  "devDependencies": {}
 }
