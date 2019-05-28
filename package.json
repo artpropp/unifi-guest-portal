@@ -1,7 +1,7 @@
 {
   "name": "node-service",
   "version": "1.0.0",
-  "description": "Lightweight Node.js/Express web service",
+  "description": "Node based UniFi WIFI guest portal",
   "main": "src/service.js",
   "scripts": {
     "start": "node src/service.js",
