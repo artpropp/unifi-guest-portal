@@ -12,10 +12,10 @@ const apiSiteUri = '/api/s/' + process.env.UNIFI_SITE;
 const deleteVouchers = process.env.UNIFI_DELETE_VOUCHERS | false;
 const redirectUri = process.env.REDIRECT_URI;
 
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, '../client')));
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
 
 app.post('/api/authorize', (req, res) => {
