@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fs = require('fs')
 const { createLogger, format, transports } = require('winston')
 const { colorize, combine, label, printf, timestamp } = format
@@ -12,7 +13,7 @@ const customFormat = printf(info => {
 })
 
 const logger = createLogger({
-    level: 'info',
+    level: process.env.LOG_LEVEL,
     format: combine(
         label({ label: 'node-service' }),
         timestamp(),
